@@ -41,16 +41,30 @@ function displayMenuItems(menu) {
 // Callback function for adding an item to the order
 function addToOrder(itemName) {
     // Get the order items list and the order total element from the HTML
+    const orderItemsList = document.getElementById('order-items');
+    const orderTotalElement = document.getElementById('order-total');
 
     // Create a list item for the order
-
+    const orderItem = document.createElement('li');
     // Set the text content of the list item to the item name
-
+    orderItem.textContent = itemName;
     // Append the list item to the order items list
-
-    // Calculate and update the total price
-
+    orderItemsList.appendChild(orderItem);
+    // Calculate and update the total price (dummy pricing for example purposes)
+    const prices = {
+        "Garlic Bread": 5.00,
+        "Bruschetta": 6.00,
+        "Margherita Pizza": 12.00,
+        "Spaghetti Carbonara": 14.00,
+        "Tiramisu": 7.00,
+        "Cheesecake": 8.00
+    };
+    // Extract the current total price
+    const currentTotal = parseFloat(orderTotalElement.textContent);
+    // Update the total price
+    const newTotal = currentTotal + prices[itemName];
     // Update the text content of the order total element with the new total
+    orderTotalElement.textContent = newTotal.toFixed(2);
 }
 
 // Function to initialize the menu system
